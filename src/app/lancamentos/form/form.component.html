@@ -1,0 +1,21 @@
+<div *ngIf="operacao">
+  <h2>{{operacao.name}} details!</h2>
+  <div><label>id: </label>{{operacao.id}}</div>
+  <div>
+    <label>Nome: </label>
+    <input [(ngModel)]="operacao.name" placeholder="Nome"/>
+  </div>
+  <div>
+    <label>Categoria: </label>
+    <input [(ngModel)]="operacao.categoria" placeholder="Categoria"/>
+  </div>
+  <div>
+    <label>Valor: </label>
+    <input [(ngModel)]="operacao.valor" placeholder="0,00"/>
+  </div>
+
+  <button (click)="goBack()">Voltar</button>
+  <button (click)="save()">Save</button>
+</div>
+
+

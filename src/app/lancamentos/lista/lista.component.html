@@ -1,0 +1,52 @@
+<div class="container">
+
+  <table class="table is-bordered is-striped is-narrow is-fullwidth">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Valor R$</th>
+      <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let operacao of operacoes" (click)="onSelect(operacao)">
+      <td>{{operacao.id}}</td>
+      <td>{{operacao.name}}</td>
+      <td>{{operacao.categoria}}</td>
+      <td>{{operacao.valor}}</td>
+      <td>
+        <a [routerLink]="['/lancamentos/adicionar/', operacao.id]"  class="col-1-4">Ver</a>
+        <button class="delete" (click)="delete(operacao); $event.stopPropagation()">x</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <app-lancamentos-search></app-lancamentos-search>
+
+  <div *ngIf="selectedOperacao">
+    <h2>
+      {{selectedOperacao.name | uppercase}}
+    </h2>
+    <button (click)="gotoDetail()">View Details</button>
+  </div>
+
+  <div>
+    <label>Nome:</label>
+    <input #operacaoName />
+
+
+    <label>name:</label>
+    <input #operacaoCategoria />
+
+
+    <label>name:</label>
+    <input #operacaoValor />
+
+    <button (click)="add(operacaoName.value, operacaoCategoria.value, operacaoValor.value); operacaoName.value=''; operacaoCategoria.value=''; operacaoValor.value='';">
+      Add
+    </button>
+  </div>
+</div>
